@@ -23,6 +23,9 @@ class CRM_Eventtickets_Form_Settings extends CRM_Core_Form {
       'multiple' => TRUE,
       'placeholder' => ts('- select -')]
     );
+
+    $this->addYesNo('is_resend_confirm_email', ts('Resend Confirmation Email?'), NULL, NULL, ['onclick' => "return showHideByValue('is_resend_confirm_email','','confirmEmail','block','radio',false);"]);
+
     $this->addButtons(array(
       array(
         'type' => 'submit',
@@ -33,35 +36,18 @@ class CRM_Eventtickets_Form_Settings extends CRM_Core_Form {
 
     // export form elements
     $this->assign('elementNames',$this->getRenderableElementNames());
+    //Set default Values
     $defaults = CRM_Eventtickets_Utils::getTicketSettings();
-    //Set default values if its not empty
-    if(!empty($defaults['event_types'])){
-      foreach ($this->_elements as $eid => &$element) {
-        $values = $element;
-        if(array_key_exists('_options', $values)){
-          foreach ($defaults['event_types'] as $id => $default) {
-            foreach ($element->_options as $key => $option) {
-              if($option['text'] == $default){
-                $element->_options[$key]['attr']['selected']='selected';
-              }
-            }
-          }
-        }
-      }
-    }
+    $this->setDefaults($defaults);
     parent::buildQuickForm();
   }
 
   public function postProcess() {
     $values = $this->exportValues();
     $options = $this->getEventTypes();
-    $eventTypes=array();
-    if(!empty($values['event_types'])){
-      foreach ($values['event_types'] as $key => $value) {
-        $eventTypes['event_types'][$value] = $options[$value];
-      }
-    }
-    CRM_Core_BAO_Setting::setItem($eventTypes, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
+    $ticket_settings['event_types'] = $values['event_types'];
+    $ticket_settings['is_resend_confirm_email'] = (empty($values['is_resend_confirm_email'])) ? 0 : $values['is_resend_confirm_email'] ;
+    CRM_Core_BAO_Setting::setItem($ticket_settings, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
     CRM_Core_Session::setStatus(ts('Event types have been saved'));
     parent::postProcess();
   }

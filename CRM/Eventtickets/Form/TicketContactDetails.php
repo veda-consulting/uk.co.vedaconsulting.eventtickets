@@ -262,7 +262,10 @@ class CRM_Eventtickets_Form_TicketContactDetails extends CRM_Core_Form {
 
     //Trigger event email
     // Might need to check setting before send email out
-    CRM_Eventtickets_Utils::resendConfirmation($this->_participantId);
+    $ticket_settings = CRM_Eventtickets_Utils::getTicketSettings();
+    if($ticket_settings['is_resend_confirm_email']){
+      CRM_Eventtickets_Utils::resendConfirmation($this->_participantId);
+    }
 
     $statusMsg = ts("Your Ticketing Details been successfully updated.");
     if($this->_is_test_case == FALSE){

@@ -411,7 +411,7 @@ class CRM_Eventtickets_Utils {
     $settings = self::getTicketSettings();
     if(!empty($settings['event_types'])){
       foreach($settings['event_types'] as $id => $name){
-        if($id == $eventTypeID){
+        if($name == $eventTypeID){
           return TRUE;
         }
       }

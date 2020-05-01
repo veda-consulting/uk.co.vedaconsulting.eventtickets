@@ -69,13 +69,14 @@ class CRM_Eventtickets_TicketingTest extends CRM_Eventtickets_TestCase_Utils imp
 
     $testEventTypeDetails = $this->eventTypeCreate();
     $testEventTypeId = $testEventTypeDetails['values'][0]['value'];
-    $eventTypes['event_types'] = array($testEventTypeId => $testEventTypeName);
+    $testSettings = $defaultSettings;
+    $testSettings['event_types'] = array($testEventTypeId);
     //Storing  the latest eventtypes to the settings.
-    CRM_Core_BAO_Setting::setItem($eventTypes, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
+    CRM_Core_BAO_Setting::setItem($testSettings, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
     $newSettings = CRM_Eventtickets_Utils::getTicketSettings();
 
     //Test case002: Check the settings are saved
-    $this->assertEquals($eventTypes['event_types'], $newSettings['event_types']);
+    $this->assertEquals($testSettings, $newSettings);
     $eventDetails = $this->eventCreate($testEventTypeId , $eventCreateParams);
 
     //Registering the contact id for the event created
