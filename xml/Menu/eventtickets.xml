@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/eventtickets/view</path>
+    <path_arguments>eid=%%eid%%</path_arguments>
+    <page_callback>CRM_Eventtickets_Page_EventTickets</page_callback>
+    <title>EventTickets</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/event/ticket/edit</path>
+    <page_callback>CRM_Eventtickets_Form_TicketContactDetails</page_callback>
+    <title>Ticket Contact Details</title>
+    <access_arguments>make online contributions</access_arguments>
+    <is_public>true</is_public>
+  </item>
+  <item>
+    <path>civicrm/event/ticket/view</path>
+    <page_callback>CRM_Eventtickets_Page_TicketContactDetails</page_callback>
+    <title>Ticket Contact Details</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/eventtickets/settings</path>
+    <page_callback>CRM_Eventtickets_Form_Settings</page_callback>
+    <title>Settings</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
