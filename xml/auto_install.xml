@@ -193,24 +193,4 @@
       <custom_group_name>Ticket_Contact_Details</custom_group_name>
     </CustomField>
   </CustomFields>
-  <OptionGroups>
-    <OptionGroup>
-      <name>event_type</name>
-      <title>Event Type</title>
-      <is_reserved>1</is_reserved>
-      <is_active>1</is_active>
-    </OptionGroup>
-  </OptionGroups>
-  <OptionValues>
-    <OptionValue>
-      <label>Ticket Event</label>
-      <name>Ticket Event</name>
-      <filter>0</filter>
-      <is_optgroup>0</is_optgroup>
-      <is_reserved>0</is_reserved>
-      <is_active>1</is_active>
-      <weight>1</weight>
-      <option_group_name>event_type</option_group_name>
-    </OptionValue>
-  </OptionValues>
 </CustomData>
