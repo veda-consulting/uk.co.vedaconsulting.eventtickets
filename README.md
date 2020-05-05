@@ -32,9 +32,7 @@ This extension facilitates user to create tickets for the participants registeri
 
 ### Usage ###
 
-* By default an event type called 'Ticket Event' will be created while installing the extension and it will be added to the ticket event type.
-
-* After registering the participants for the event, at the thank you page there is an option to add the 'Add Ticket Contact Details'.
+* After registering the participants for the event, at the thank you page there is an option 'Add Ticket Contact Details' to add the ticket details.
 ![Screenshot of View Ticket Details](images/online-registration.PNG)
 
 * Also while viewing the participant details a button to view and/or edit the ticket details.

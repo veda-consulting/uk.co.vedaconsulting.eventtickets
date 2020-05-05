@@ -36,17 +36,6 @@ function eventtickets_civicrm_install() {
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_postInstall
  */
 function eventtickets_civicrm_postInstall() {
-  //Including the Created 'Ticket Event' type option as a default ticketed event type to the  settings
-  $result = civicrm_api3('OptionValue', 'get', [
-    'sequential' => 1,
-    'name' => CRM_Eventtickets_Constants::EVENT_TYPE_TICKET_EVENT,
-  ]);
-  if(!empty($result['values'])){
-    $eventTypeId = $result['values'][0]['value'];
-    $eventTypeName = $result['values'][0]['label'];
-    $ticket_settings['event_types'][$eventTypeId] = $eventTypeName;
-    CRM_Core_BAO_Setting::setItem($ticket_settings, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
-  }
   _eventtickets_civix_civicrm_postInstall();
 }
 
