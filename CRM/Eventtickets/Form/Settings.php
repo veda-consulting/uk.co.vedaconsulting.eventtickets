@@ -24,7 +24,7 @@ class CRM_Eventtickets_Form_Settings extends CRM_Core_Form {
       'placeholder' => ts('- select -')]
     );
 
-    $this->addYesNo('is_resend_confirm_email', ts('Resend Confirmation Email?'), NULL, NULL, ['onclick' => "return showHideByValue('is_resend_confirm_email','','confirmEmail','block','radio',false);"]);
+    $this->addYesNo('is_resend_confirm_email', ts('Resend Confirmation Email?'), NULL, NULL);
 
     $this->addButtons(array(
       array(
@@ -48,7 +48,7 @@ class CRM_Eventtickets_Form_Settings extends CRM_Core_Form {
     $ticket_settings['event_types'] = $values['event_types'];
     $ticket_settings['is_resend_confirm_email'] = (empty($values['is_resend_confirm_email'])) ? 0 : $values['is_resend_confirm_email'] ;
     CRM_Core_BAO_Setting::setItem($ticket_settings, CRM_Eventtickets_Constants::TICKET_SETTINGS, 'ticket_settings');
-    CRM_Core_Session::setStatus(ts('Event types have been saved'));
+    CRM_Core_Session::setStatus(ts('Ticket Settings have been saved'), '' , 'success');
     parent::postProcess();
   }
 
